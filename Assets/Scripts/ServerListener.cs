@@ -129,7 +129,7 @@ public class ServerListener : MonoBehaviour
 
                 }
                 String[] datas = value.Split(':');
-                //UnityEngine.Debug.logger.Log(datas[0]+"   "+value);
+                UnityEngine.Debug.logger.Log(datas[0]+"   "+value);
                 if (datas[0].Equals("I"))
                 {
 
@@ -171,17 +171,20 @@ public class ServerListener : MonoBehaviour
                 }
                 // Call an external function (void) given. 
 
-                else if (datas[0].ToUpper().Equals("P2"))
-                {
-                    String[] cod = datas[1].Split(',');
-                    Vector3 healthPosition = new Vector3(Int32.Parse(cod[0]), -Int32.Parse(cod[1]));
-                    datas[2] = datas[2].Trim();
-                    datas[2] = datas[2].Substring(0, datas[2].Length - 2);
-                    int healthCountTime = Int32.Parse(datas[2]);
-                    HealthObject he = new HealthObject(healthPosition, healthCountTime);
-                    healthToDraw.Add(he);
-                    //UnityEngine.Debug.logger.Log("Health   " + healthPosition.x + "," + healthPosition.y + " " + healthCountTime);
-                }
+                //else if (datas[0].ToUpper().Equals("P"))
+                //{
+                    //Debug.logger.Log(datas.ToString());
+                    // Tank Status Update [Pn;x,y;d;shot;health;coins;points]
+                    /*var state = d.Split(';');
+                    var currentTank = tanks[int.Parse(state[0].Substring(1))];
+                    currentTank.x = int.Parse(state[1].Split(',')[0]);
+                    currentTank.y = int.Parse(state[1].Split(',')[1]);
+                    currentTank.direction = (Direction)int.Parse(state[2]);
+                    currentTank.isShot = int.Parse(state[3]) == 1;
+                    currentTank.health = int.Parse(state[4]);
+                    currentTank.coins = int.Parse(state[5]);
+                    currentTank.points = int.Parse(state[6]);*/
+                //}
 
             }
         }
